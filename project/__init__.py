@@ -1,0 +1,2 @@
+#background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, rgba(71, 135, 255, 0.44) 30px), repeating-linear-gradient(rgba(115, 196, 250, 0.51), rgba(38, 90, 148, 0.6));
+#background-color: rgba(71, 135, 255, 0.44);
