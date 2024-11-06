@@ -1,0 +1,53 @@
+/* BODY */
+body {
+    background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, rgba(71, 135, 255, 0.44) 30px), repeating-linear-gradient(rgba(115, 196, 250, 0.51), rgba(38, 90, 148, 0.6));
+    background-color: rgba(71, 135, 255, 0.44);
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263A94;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    float: left;
+}
+
+
+/* FOOTER */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #263A94;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/* HEADER TITLE */
+.header {
+    text-align: center;
+    margin-top: 50px;
+}

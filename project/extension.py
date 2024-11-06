@@ -1,1 +1,4 @@
-# Extensions like db and login_manager
+from flask_sqlalchemy import SQLAlchemy
+
+
+db = SQLAlchemy()
