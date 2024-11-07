@@ -20,3 +20,4 @@ class CreateArticle(FlaskForm):
     content = TextAreaField("Content", validators=[DataRequired()])
     tags = StringField("Tags", validators=[DataRequired()])
     submit = SubmitField("Create Article")
+    
