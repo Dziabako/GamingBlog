@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-<!-- Your content goes here -->
+<section class="article">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <p>Author: {{ article.author }}</p>
+    <p>Created: {{ article.date }}</p>
+    <p>Tags: {{ article.tags }}</p>
+    <a href="{{ url_for('main.index') }}">Back</a>
+</section>
 {% endblock %}

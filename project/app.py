@@ -1,5 +1,6 @@
 from flask import Flask
-from extension import db
+from extension import db, login_manager
+from models import User
 from bluepprints.main import main
 
 
@@ -10,6 +11,11 @@ def create_app(database_uri="sqlite:///db.sqlite"):
     app.config["SECRET_KEY"] = "supersecretkey"
 
     db.init_app(app)
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
 
     app.register_blueprint(main)
 

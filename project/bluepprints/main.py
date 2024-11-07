@@ -7,10 +7,13 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def index():
-    return render_template("index.html")
+    articles = Articles.query.all()
+
+    return render_template("index.html", articles=articles)
 
 
 @main.route("/article/<article_id>")
 def article(article_id):
-    article = Articles.query.get(article_id)
+    article = Articles.query.filter(Articles.id == article_id).first()
+    
     return render_template("article.html", article=article)
