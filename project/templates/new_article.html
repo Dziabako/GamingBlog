@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>New Article</h1>
+<div class="container">
+    <form method="POST" class="form" action="{{ url_for('create_article') }}">
+        {{ form.csrf_token }}
+
+        <div>
+            {{ form.title.label }}
+            {{ form.title }}
+        </div>
+
+        <div>
+            {{ form.content.label }}
+            {{ form.content }}
+        </div>
+
+        <div>
+            {{ form.author.label }}
+            {{ form.author }}
+        </div>
+
+        <div>
+            {{ form.date.label }}
+            {{ form.date }}
+        </div>
+
+        <div>
+            {{ form.tags.label }}
+            {{ form.tags }}
+        </div>
+
+        <div>
+            {{ form.submit }}
+        </div>
+
+    </form>
+</div>
+{% endblock %}

@@ -7,6 +7,9 @@
         {% for article in articles %}
             <li class="article-short">
                 <a href="{{ url_for('main.article', article_id=article.id) }}">{{ article.title }}</a>
+                {% if loop.index <= 10 %}
+                    <p>{{ article.content }}</p>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
