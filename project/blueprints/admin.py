@@ -9,7 +9,7 @@ from forms import LoginForm, RegisterForm, CreateArticle, EditArticle
 admin = Blueprint("admin", __name__)
 
 
-@admin.route("/register")
+@admin.route("/register", methods=["GET", "POST"])
 def register():
     form = RegisterForm()
 
@@ -34,7 +34,7 @@ def register():
 
 
 @login_required
-@admin.route("/login")
+@admin.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     
@@ -68,7 +68,7 @@ def logout():
 
 
 @login_required
-@admin.route("/create_article")
+@admin.route("/create_article", methods=["GET", "POST"])
 def create_article():
     form = CreateArticle()
 
@@ -79,7 +79,7 @@ def create_article():
         date = form.date.data
         tags = form.tags.data
 
-        new_article = Articles(title=title, content=content, author=author, date=date, tags=tags)
+        new_article = Articles(title=title, content=content, author=author, date=date, tags=tags, user_id=current_user.id)
         db.session.add(new_article)
         db.session.commit()
 
