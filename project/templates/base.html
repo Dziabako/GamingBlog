@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <div class="page-title">
+        <h1>Gaming Blog</h1>
+    </div>
     <header>
-        <h1 class="header">Gaming Blog</h1>
         <nav class="navbar">
             <ul>
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 <li><a>About</a></li>
                 <li><a>Contact</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

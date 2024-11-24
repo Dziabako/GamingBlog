@@ -2,6 +2,21 @@
 body {
     background-image:  repeating-radial-gradient(circle at 0 0, transparent 0, rgba(71, 135, 255, 0.44) 30px), repeating-linear-gradient(rgba(115, 196, 250, 0.51), rgba(38, 90, 148, 0.6));
     background-color: rgba(71, 135, 255, 0.44);
+    min-height: 100vh;
+    padding-bottom: 10%;
+}
+
+header {
+    position: sticky; /* Keeps the navbar at the top when scrolling */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 10000; /* Ensure it stays above other content */
+}
+
+/* TITLE */
+.page-title {
+    text-align: center;
+    margin-top: 2rem;
 }
 
 /* NAVBAR */
@@ -16,7 +31,7 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 15px;;
 }
 
 nav a:hover {
@@ -38,11 +53,10 @@ nav li {
 footer {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 98.7%;
     background-color: #263A94;
     color: white;
     text-align: center;
-    padding: 10px 0;
 }
 
 
@@ -50,4 +64,24 @@ footer {
 .header {
     text-align: center;
     margin-top: 50px;
+}
+
+
+/* INDEX */
+.article {
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    border: black solid;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    
+}
+
+.article-box {
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
 }

@@ -2,16 +2,13 @@
 
 
 {% block content %}
-<section class="articles-list">
-    <ul>
-        {% for article in articles %}
-            <li class="article-short">
-                <a href="{{ url_for('main.article', article_id=article.id) }}">{{ article.title }}</a>
-                {% if loop.index <= 10 %}
-                    <p>{{ article.content }}</p>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-</section>
+    {% for article in articles %}
+        <div class="article">
+            <div class="article-box">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.content.split('. ')[:4] | join('. ') }}...</p>
+                <a href="{{ url_for('main.article', article_id=article.id) }}">Read more</a>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
