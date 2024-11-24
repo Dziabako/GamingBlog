@@ -85,3 +85,62 @@ footer {
     padding-top: 1rem;
     padding-bottom: 2.5rem;
 }
+
+
+/* LOGIN AND REGISTER */
+.container {
+    border: black solid;
+    width: 50%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Vertically centers the label with the text area */
+    justify-content: center; /* Horizontally centers the button */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.text-label {
+    width: 8rem;
+    display: inline-block;
+    text-align: right;
+}
+
+.text-field {
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.form-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+}
+
+/* CREATE ARTICLE */
+.article-label{
+    width: 3rem;
+    display: inline-block;
+    text-align: left;
+}
+
+.date-field {
+    width: 12.5rem;
+}
+
+.content-field {
+    width: 12.5rem;
+    height: 5rem;
+
+}

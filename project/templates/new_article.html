@@ -2,38 +2,39 @@
 
 
 {% block content %}
-<h1>New Article</h1>
+
 <div class="container">
+    <h2>New Article</h2>
     <form method="POST" class="form" action="{{ url_for('admin.create_article') }}">
         {{ form.csrf_token }}
 
-        <div>
-            {{ form.title.label }}
-            {{ form.title }}
+        <div class="form-group">
+            {{ form.title.label(class_="article-label") }}
+            {{ form.title(class_="text-field") }}
         </div>
 
-        <div>
-            {{ form.content.label }}
-            {{ form.content }}
+        <div class="form-group">
+            {{ form.content.label(class_="article-label") }}
+            {{ form.content(class="content-field text-field") }}
         </div>
 
-        <div>
-            {{ form.author.label }}
-            {{ form.author }}
+        <div class="form-group">
+            {{ form.author.label(class_="article-label") }}
+            {{ form.author(class_="text-field") }}
         </div>
 
-        <div>
-            {{ form.date.label }}
-            {{ form.date }}
+        <div class="form-group">
+            {{ form.date.label(class_="article-label") }}
+            {{ form.date(class_="date-field text-field") }}
         </div>
 
-        <div>
-            {{ form.tags.label }}
-            {{ form.tags }}
+        <div class="form-group">
+            {{ form.tags.label(class_="article-label") }}
+            {{ form.tags(class_="text-field") }}
         </div>
 
-        <div>
-            {{ form.submit }}
+        <div class="form-group">
+            {{ form.submit(class_="form-btn") }}
         </div>
 
     </form>
