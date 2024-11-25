@@ -75,27 +75,30 @@ def test_edit_article(client):
     assert b"edited article" in response.data
 
 
-# def test_delete_article(client, app):
-#     client.post("/register", data={"username": "test", "password": "test", "confirm_password": "test"}, follow_redirects=True)
-#     client.post("/login", data={"username": "testing", "password": "test"}, follow_redirects=True)
+def test_delete_article(client, app):
+    client.post("/register", data={"username": "test", "password": "test", "confirm_password": "test"}, follow_redirects=True)
+    client.post("/login", data={"username": "test", "password": "test"}, follow_redirects=True)
 
-#     response_create = client.post("/create_article", data={
-#         "title": "tested article",
-#         "content": "test",
-#         "author": "test",
-#         "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-#         "tags": "test"
-#     }, follow_redirects=True)
+    response = client.post("/create_article", data={
+        "title": "article to delete",
+        "content": "test",
+        "author": "test",
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "tags": "test"
+    }, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"article to delete" in response.data
 
-#     assert response_create.status_code == 200 # Ensure article creation was successful
+    with app.app_context():
+        article = Articles.query.filter_by(title="article to delete").first()
+        assert article is not None, f"Article was not created: {article}"
+        print(f"Article created: {article}")
 
-#     # Retrieve the article to get its ID
-#     article = Articles.query.filter_by(title="tested article").first()
-#     print("Article:", article)  # Debugging statement to inspect the article
-#     assert article is not None  # Ensure the article exists
+    response = client.post(f"/delete_article/{article.id}", follow_redirects=True)
+    assert response.status_code == 200
+    assert b"article to delete" not in response.data
 
-#     # Attempt to delete the article using the correct ID
-#     response = client.get(f"/delete_article/{article.id}", follow_redirects=True)
-
-#     assert response.status_code == 200
-#     assert b"tested article" not in response.data  # Ensure the article is no longer in the response
+    with app.app_context():
+        article = Articles.query.filter_by(title="article to delete").first()
+        assert article is None, f"Article was not deleted: {article}"
+        print(f"Article after deletion: {article}")

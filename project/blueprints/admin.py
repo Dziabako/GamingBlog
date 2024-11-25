@@ -114,9 +114,11 @@ def edit_article(article_id):
 @admin.route("/delete_article/<article_id>", methods=["GET", "POST"])
 @login_required
 def delete_article(article_id):
-    article = Articles.query.filter(Articles.id == article_id).first()
-
-    db.session.delete(article)
-    db.session.commit()
-    flash("Article is deleted!")
+    article = Articles.query.get(article_id)
+    if article:
+        db.session.delete(article)
+        db.session.commit()
+        flash("Article deleted successfully!")
+    else:
+        flash("Article not found!")
     return redirect(url_for("main.index"))
