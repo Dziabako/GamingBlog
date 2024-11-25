@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, flash, redirect, url_for
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from extension import db
-from models import User, Articles
-from forms import LoginForm, RegisterForm, CreateArticle, EditArticle
+from project.extension import db
+from project.models import User, Articles
+from project.forms import LoginForm, RegisterForm, CreateArticle, EditArticle
 
 
 admin = Blueprint("admin", __name__)

@@ -1,8 +1,15 @@
+"""
+This has to be executed every time in new terminal for app to be able to run
+Otherwise it will not work
+export FLASK_APP=project
+export FLASK_ENV=development  # Optional: Enables debug mode
+"""
+
 from flask import Flask
-from extension import db, login_manager
-from models import User, Articles
-from blueprints.main import main
-from blueprints.admin import admin
+from .extension import db, login_manager
+from .models import User
+from .blueprints.main import main
+from .blueprints.admin import admin
 
 
 def create_app(database_uri="sqlite:///db.sqlite"):
