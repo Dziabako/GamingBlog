@@ -111,7 +111,7 @@ def edit_article(article_id):
     return render_template("edit_article.html", form=form, article=article)
 
 
-@admin.route("/delete_article/<article_id>")
+@admin.route("/delete_article/<article_id>", methods=["GET", "POST"])
 @login_required
 def delete_article(article_id):
     article = Articles.query.filter(Articles.id == article_id).first()
