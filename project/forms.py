@@ -29,7 +29,7 @@ class EditArticle(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("Content", validators=[DataRequired()])
     author = StringField("Author", validators=[DataRequired()])
-    date = StringField("Date", validators=[DataRequired()])
+    date = DateField("Date", validators=[DataRequired()])
     tags = StringField("Tags", validators=[DataRequired()])
     submit = SubmitField("Edit Article")
     

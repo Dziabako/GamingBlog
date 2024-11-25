@@ -67,8 +67,8 @@ def logout():
     return redirect(url_for("main.index"))
 
 
-@login_required
 @admin.route("/create_article", methods=["GET", "POST"])
+@login_required
 def create_article():
     form = CreateArticle()
 
@@ -89,35 +89,30 @@ def create_article():
     return render_template("new_article.html", form=form)
 
 
+@admin.route("/edit_article/<article_id>", methods=["GET", "POST"])
 @login_required
-@admin.route("/edit_article/<article_id>")
 def edit_article(article_id):
-    form = EditArticle()
+    article = Articles.query.filter(Articles.id == article_id).first()
+
+    form = EditArticle(obj=article)
 
     if form.validate_on_submit():
-        title = form.title.data
-        content = form.content.data
-        author = form.author.data
-        date = form.date.data
-        tags = form.tags.data
-
-        article = Articles.query.filter(Articles.id == article_id).first()
-        article.title = title
-        article.content = content
-        article.author = author
-        article.date = date
-        article.tags = tags
+        article.title = form.title.data
+        article.content = form.content.data
+        article.author = form.author.data
+        article.date = form.date.data
+        article.tags = form.tags.data
         db.session.commit()
 
         flash("Article is edited!")
         return redirect(url_for("main.index"))
 
 
-    return render_template("edit_article.html", form=form)
+    return render_template("edit_article.html", form=form, article=article)
 
 
-@login_required
 @admin.route("/delete_article/<article_id>")
+@login_required
 def delete_article(article_id):
     article = Articles.query.filter(Articles.id == article_id).first()
 
